@@ -465,7 +465,7 @@ JWT_SECRET=suaSenhaSecreta
     | 21  | Latest updates, August 1st | The whole text for the blog post goes here in this key | 14  // Chave estrangeira, referenciando o id de `users`    | 2011-08-01T19:58:00.000Z | 2011-08-01T19:58:51.947Z |
 
 
-  - Uma tabela chamada **PostCategories**, contendo uma **chave primária composta** utilizando os dois atributos da estrutura:
+  - Uma tabela chamada **posts_categories**, contendo uma **chave primária composta** utilizando os dois atributos da estrutura:
 
     | post_id | category_id |
     | ------- | ----------- |

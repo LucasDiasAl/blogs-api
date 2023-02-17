@@ -37,8 +37,22 @@ const getUserById = async (req, res) => {
   }
 };
 
+const deleteUser = async (req, res) => { 
+  try {
+    const { user: email } = req;
+    const { id: userId } = await userService.getUserByEmail(email);
+    const user = await userService.getUserById(userId);
+    if (!user) return res.status(401).json({ message: 'User does not exist' });
+    await userService.deleteUser(userId);
+    return res.status(204).json({});
+  } catch (err) {
+    return res.status(400).json({ message: err.message });
+  }
+};
+
 module.exports = {
   newUser,
   getUsers,
   getUserById,
+  deleteUser,
 };

@@ -28,9 +28,15 @@ const getUserById = async (idUser) => {
   return user.dataValues;
 };
 
+const deleteUser = async (id) => {
+  await User.destroy({ where: { id } });
+  return null;
+};
+
 module.exports = {
   getUserByEmail,
   newUser,
   getAllUsers,
   getUserById,
+  deleteUser,
 };

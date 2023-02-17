@@ -2,7 +2,6 @@ const { categoryService } = require('../services');
 
 const categoryIdsExists = async (ids) => {
   const result = await Promise.all(ids.map(async (e) => categoryService.queryCategoryById(e)));
-  console.log(result);
   if (result.some((e) => e === null) || result.length === 0) {
     return { type: 400, message: 'one or more "categoryIds" not found' };
   }
@@ -11,7 +10,6 @@ const categoryIdsExists = async (ids) => {
 
 const postInputsExists = (body) => {
   const { title, content, categoryIds } = body;
-  console.log(body);
   if (!title || !content || !categoryIds) {
     return { type: 400, message: 'Some required fields are missing' };
   }

@@ -23,7 +23,7 @@ const getAll = async () => {
       },
     ],
   });
-  return { posts };
+  return posts;
 };
 
 const getPostById = async (id) => {
@@ -44,8 +44,25 @@ const getPostById = async (id) => {
   return posts;
 };
 
+const updatePost = async (userId, body, id) => {
+  const targetPost = await getPostById(id);
+  if (targetPost.user.id !== userId) return { type: 'fail', message: 'Unauthorized user' };
+  const { title, content } = body;
+  await BlogPost.update(
+    { title, content },
+    { where: { id } },
+  );
+  const updatedPost = await getPostById(id);
+  return { type: 'sucess', message: updatedPost };
+};
+
+// const queryDeleteById = async (userId, id) => {
+
+// }
+
 module.exports = {
   createPost,
   getAll,
   getPostById,
+  updatePost,
  };

@@ -20,7 +20,13 @@ const newUser = async (userObj) => {
     return result.dataValues;
 };
 
+const getAllUsers = async () => {
+  const users = await User.findAll({ attributes: { exclude: 'password' } });
+  return users.map((user) => user.dataValues);
+};
+
 module.exports = {
   getUserByEmail,
   newUser,
+  getAllUsers,
 };

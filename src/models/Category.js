@@ -6,11 +6,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         primaryKey: true,
       },
-      name: {
-        type: DataTypes.STRING,
-      }
+      name: DataTypes.STRING
     },
     {
+      tableName: 'categories',
       undescored: true,
       timestamps: false,
     }

@@ -8,4 +8,6 @@ const router = express.Router();
 
 router.post('', JwtToken, newPostValidation, postController.createNewPost);
 
+router.get('', JwtToken, postController.allPosts);
+
 module.exports = router;

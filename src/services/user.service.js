@@ -25,8 +25,20 @@ const getAllUsers = async () => {
   return users.map((user) => user.dataValues);
 };
 
+const getUserById = async (idUser) => {
+  const user = await User.findOne({
+    where: {
+      id: idUser,
+    },
+    attributes: { exclude: 'password' },
+  });
+  if (!user) return null;
+  return user.dataValues;
+};
+
 module.exports = {
   getUserByEmail,
   newUser,
   getAllUsers,
+  getUserById,
 };

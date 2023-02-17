@@ -10,4 +10,6 @@ router.post('', JwtToken, newPostValidation, postController.createNewPost);
 
 router.get('', JwtToken, postController.allPosts);
 
+router.get('/:id', JwtToken, postController.getPostById);
+
 module.exports = router;

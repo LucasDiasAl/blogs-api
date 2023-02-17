@@ -3,8 +3,10 @@ module.exports = (sequelize, DataTypes) => {
     'Category',
     {
       id: {
-        type: DataTypes.STRING,
-        primaryKey: true,
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true 
       },
       name: DataTypes.STRING
     },

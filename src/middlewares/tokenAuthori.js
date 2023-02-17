@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
   
   Jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) return res.status(401).json({ message: 'Expired or invalid token' });
-    req.emai1 = decoded.data;
+    req.user = decoded.email;
   });
 next();
 };

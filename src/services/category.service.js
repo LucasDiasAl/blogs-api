@@ -11,7 +11,14 @@ const queryAllCategorys = async () => {
   return result.map((categ) => categ.dataValues);
 };
 
+const queryCategoryById = async (id) => {
+  const result = await Category.findOne({ where: { id } });
+  if (result) return result.dataValues;
+  return null;
+};
+
 module.exports = {
   newCategory,
   queryAllCategorys,
+  queryCategoryById,
 };

@@ -5,7 +5,7 @@ module.exports = (data) => {
   const jwtConfig = {
     algorithm: 'HS256',
   };
-  const payload = { data };
+  const payload = { email: data };
   const token = jwt.sign(payload, process.env.JWT_SECRET, jwtConfig);
   return token;
 };

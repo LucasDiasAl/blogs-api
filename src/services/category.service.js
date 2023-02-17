@@ -6,6 +6,12 @@ const newCategory = async (categoryObj) => {
   return result.dataValues;
 };
 
+const queryAllCategorys = async () => {
+  const result = await Category.findAll();
+  return result.map((categ) => categ.dataValues);
+};
+
 module.exports = {
   newCategory,
+  queryAllCategorys,
 };

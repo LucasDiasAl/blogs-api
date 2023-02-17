@@ -56,13 +56,22 @@ const updatePost = async (userId, body, id) => {
   return { type: 'sucess', message: updatedPost };
 };
 
-// const queryDeleteById = async (userId, id) => {
-
-// }
+const queryDeleteById = async (userId, id) => {
+  const targetPost = await getPostById(id);
+  if (!targetPost) return { type: 404, message: 'Post does not exist' };
+  if (targetPost.user.id !== userId) return { type: 401, message: 'Unauthorized user' };
+  await BlogPost.destroy({
+    where: {
+      id,
+    },
+  });
+  return { type: 'sucess', message: '' };
+};
 
 module.exports = {
   createPost,
   getAll,
   getPostById,
   updatePost,
+  queryDeleteById,
  };

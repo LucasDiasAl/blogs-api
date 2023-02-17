@@ -47,9 +47,10 @@ const deletePostById = async (req, res) => {
   try {
     const { id } = req.params;
     const { dataValues: { id: userId } } = await userService.getUserByEmail(req.user);
-    const { type, message } = await postService.deletePost(userId, id);
-    if (type !== 'sucess') return res.status(401).json({ message });
-    return res.status(200).json(message);
+    const { type, message } = await postService.queryDeleteById(userId, id);
+    console.log(type, message);
+    if (type !== 'sucess') return res.status(type).json({ message });
+    return res.status(204).json();
   } catch (err) {
     return res.status(400).json({ error: err.message });
   }
